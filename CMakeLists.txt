@@ -1190,7 +1190,7 @@ if(BUILD_STATIC)
   endif()
 endif()
 
-if(BUILD_SHARED)
+if(1) # BUILD_SHARED
   set(perf-tools
     local_lat
     remote_lat
@@ -1199,11 +1199,11 @@ if(BUILD_SHARED)
     inproc_lat
     inproc_thr)
 
-  if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug") # Why?
+  #if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug") # Why?
     option(WITH_PERF_TOOL "Build with perf-tools" ON)
-  else()
-    option(WITH_PERF_TOOL "Build with perf-tools" OFF)
-  endif()
+  #else()
+  #  option(WITH_PERF_TOOL "Build with perf-tools" OFF)
+  #endif()
 
   if(WITH_PERF_TOOL)
     foreach(perf-tool ${perf-tools})
@@ -1226,7 +1226,7 @@ if(BUILD_SHARED)
       endif()
     endforeach()
 
-    if(BUILD_STATIC)
+    if(1) # BUILD_STATIC
       add_executable(benchmark_radix_tree perf/benchmark_radix_tree.cpp)
       target_link_libraries(benchmark_radix_tree libzmq-static)
       target_include_directories(benchmark_radix_tree
