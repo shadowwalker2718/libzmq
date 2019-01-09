@@ -1207,8 +1207,8 @@ if(1) # BUILD_SHARED
 
   if(WITH_PERF_TOOL)
     foreach(perf-tool ${perf-tools})
-      add_executable(${perf-tool} perf/${perf-tool}.cpp)
-      target_link_libraries(${perf-tool} libzmq)
+      add_executable(zmq_${perf-tool} perf/${perf-tool}.cpp)
+      target_link_libraries(zmq_${perf-tool} libzmq)
 
       if(ZMQ_BUILD_FRAMEWORK)
         # Copy perf-tools binaries into Framework
@@ -1220,7 +1220,7 @@ if(1) # BUILD_SHARED
           VERBATIM
           COMMENT "Perf tools")
       else()
-        install(TARGETS ${perf-tool}
+        install(TARGETS zmq_${perf-tool}
           RUNTIME DESTINATION bin
           COMPONENT PerfTools)
       endif()
